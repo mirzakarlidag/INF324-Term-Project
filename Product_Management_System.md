@@ -32,85 +32,34 @@ The database system must support the following tasks:
 
 ## Relational Models
 
-Below are the relation models for the database system. Primary key identifiers are written in bold.
+Below are the relation models for the database system.
 
-* PRODUCT(<u>sku</u>, model, volume, color)
-* PRODCT_TYPE(<u>product_type_id</u>, name)
-* MARKET(<u>market_id</u>, country, region)
-* PLUG_TYPE(<u>plug_type_id</u>, name)
-* ENERGY_CLASS(<u>energy_class_id</u>, name)
-* COMPONENT()
-* COMPONENT_RELATION()
-* COMPONENT_GROUP()
-* COMPONENT_CATEGORY()
-* COMPONENT_SUBCATEGORY()
-* PRODUCTION_LINE()
-* CUSTOMER()
-* ORDER()
-* TRANSPORTATION()
-* TRANSPORTATION_TYPE()
+* PRODUCT(<u>**sku**</u>, model, volume, color)
+* PRODCT_TYPE(<u>**product_type_id**</u>, name)
+* MARKET(<u>**market_id**</u>, country, region)
+* PLUG_TYPE(<u>**plug_type_id**</u>, name)
+* ENERGY_CLASS(<u>**energy_class_id**</u>, name)
+* COMPONENT(<u>**stock_number**</u>, description, unit, group, category, sub_category)
+* COMPONENT_RELATION(<u>**parent_stock_number, child_stock_number**</u>, <span class="double-underlined">**parent_stock_number**</span>, <span class="double-underlined">**child_stock_number**</span>, quantity)
+* COMPONENT_GROUP(<u>**group_id**</u>, name)
+* COMPONENT_CATEGORY(<u>**category_id**</u>, name, <span class="double-underlined">**group_id**</span>)
+* COMPONENT_SUBCATEGORY(<u>**sub_category_id**</u>, name, <span class="double-underlined">**category_id**</span>)
+* PRODUCT_COMPONENT(<u>**sku, stock_number**</u>, <span class="double-underlined">**sku**</span>, <span class="double-underlined">**stock_number**</span>, quantity)
+* PRODUCTION_LINE(<u>**prod_line_id**</u>, name, capacity_per_day)
+* PRODUCTION_LINE_PRODUCT(<u>**prod_line_id, sku**</u>, <span class="double-underlined">**prod_line_id**</span>, <span class="double-underlined">**sku**</span> )
+* CUSTOMER(<u>**customer_id**</u>, name, <span class="double-underlined">**market_id**</span>)
+* ORDER(<u>**order_id**</u>, <span class="double-underlined">**customer_id**</span>, <span class="double-underlined">**market_id**</span> )
+* TRANSPORTATION_TYPE(<u>**transportation_type_id**</u>, name, capacity)
+* TRANSPORTATION(<u>**transportation_id**</u>, <span class="double-underlined">**transportation_type_id**</span>, <span class="double-underlined">**destination_market_id**</span>, planned_date, status)
 
-
-
+**Double Underlined CSS, later will be pasted to the html before pdf coversion**
+.double-underlined {
+    text-decoration:underline;
+    border-bottom: 1px solid #000;
+}**
 
 ## Integrity Constraints
 ### Reference Integrity Constraints
 ### Domain Constraints
 ### Semantic Integrity Constraints
-
-ENTITIES
-PRODUCT:
-    - energy_class
-    - type
-
-COUNTRY:
-    - name
-    - code
-    - 
-
-COMPONENT:
-    - stock_number
-    - description
-    - parent_component
-    - unit
-    - group
-    - category
-    - sub_category
-
-COMPONENT GROUP:
-    - name
-
-COMPONENT CATEGORY:
-    - name
-    - group
-
-COMPONENT SUB CATEGORY:
-    - name
-    - category
-
-COMPONENT RELATION:
-    - component
-    - parent_component
-    - quantity
-    - level
-
-PRODUCTION LINE:
-    - capacity
-    - available_models
-
-CUSTOMER:
-    - name
-    - quantity
-    - country
-    - available_transportation_methods
-
-TRANSPORTATION:
-    - num_of_units
-    - destination
-    - type
-
-TRANSPORTATION TYPE:
-    - name
-    - capacity
-
 
