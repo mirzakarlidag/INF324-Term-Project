@@ -32,17 +32,23 @@ The database system must support the following tasks:
 
 ## Relational Models
 
-    * PRODUCT()
-    * COMPONENT()
-    * COMPONENT_RELATION()
-    * COMPONENT_GROUP()
-    * COMPONENT_CATEGORY()
-    * COMPONENT_SUBCATEGORY()
-    * PRODUCTION_LINE()
-    * CUSTOMER()
-    * ORDER()
-    * TRANSPORTATION()
-    * TRANSPORTATION_TYPE()
+Below are the relation models for the database system. Primary key identifiers are written in bold.
+
+* PRODUCT(<u>sku</u>, model, volume, color)
+* PRODCT_TYPE(<u>product_type_id</u>, name)
+* MARKET(<u>market_id</u>, country, region)
+* PLUG_TYPE(<u>plug_type_id</u>, name)
+* ENERGY_CLASS(<u>energy_class_id</u>, name)
+* COMPONENT()
+* COMPONENT_RELATION()
+* COMPONENT_GROUP()
+* COMPONENT_CATEGORY()
+* COMPONENT_SUBCATEGORY()
+* PRODUCTION_LINE()
+* CUSTOMER()
+* ORDER()
+* TRANSPORTATION()
+* TRANSPORTATION_TYPE()
 
 
 
@@ -54,14 +60,13 @@ The database system must support the following tasks:
 
 ENTITIES
 PRODUCT:
-    - model
-    - sku
-    - country
-    - plug type
     - energy_class
-    - volume
-    - color
     - type
+
+COUNTRY:
+    - name
+    - code
+    - 
 
 COMPONENT:
     - stock_number
