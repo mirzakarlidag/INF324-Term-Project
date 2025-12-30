@@ -77,3 +77,22 @@ WHERE pl.prod_line_id = 4
   AND m.country = 'Italy'
 ORDER BY p.model;
 
+
+-- QUERY 5: Count of Products sold to all Markets that are transported by Sea and have Energy Class A
+SELECT
+    m.country,
+    m.region,
+    COUNT(DISTINCT op.sku) AS product_count,
+    SUM(op.quantity) AS total_quantity
+FROM ORDER_PRODUCT op
+JOIN "ORDER" o ON op.order_id = o.order_id
+JOIN TRANSPORTATION t ON o.order_id = t.order_id
+JOIN TRANSPORTATION_TYPE tt ON t.transportation_type_id = tt.transportation_type_id
+JOIN CUSTOMER c ON o.customer_id = c.customer_id
+JOIN MARKET m ON c.market_id = m.market_id
+JOIN PRODUCT_MARKET pm ON op.sku = pm.sku AND m.market_id = pm.market_id
+JOIN ENERGY_CLASS ec ON pm.energy_class_id = ec.energy_class_id
+WHERE tt.name = 'Maritime'
+  AND ec.name = 'A'
+GROUP BY m.country, m.region
+ORDER BY product_count DESC, m.country;
