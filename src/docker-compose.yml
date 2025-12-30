@@ -1,15 +1,12 @@
-# Referenced are below
-# https://medium.com/@aedemirsen/execute-sql-commands-at-postgresql-db-startup-with-docker-2be0abadec48
-# https://docs.docker.com/guides/pgadmin/
-
 # version: "3.8"
 services:
   postgresql:
-    image: postgres
+    image: postgres:15-alpine # switched to alpine version for smaller image size
     container_name: postgres_db
     restart: always
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - 5431:5432
     volumes:
