@@ -45,12 +45,14 @@
 * PRODUCTION_LINE.capacity_par_day > 0
 ### ORDER
 * ORDER.status -> ('NEW', 'APPROVED', 'SHIPPED', 'CANCELLED')
+* ORDER.order_date <= CURRENT DATE
 ### ORDER_PRODUCT
 * ORDER_PRODUCT.quantity > 0
 ### TRANSPORTATION_TYPE
 * TRANSPORTATION_TYPE.capacity > 0
 ### TRANSPORTATION
 * TRANSPORTATION.status -> ('NEW', 'APPROVED', 'SHIPPED', 'CANCELLED')
+* ORDER.planned_date >= CURRENT DATE
 
 
 ## Semantic Integrity Constraints
